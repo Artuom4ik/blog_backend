@@ -65,7 +65,11 @@
             <div class="flex-fill" style="margin-right: 30px;">
               <div class="card blog__slide text-center">
                 <div class="blog__slide__img">
-                  <img class="card-img rounded-0" src={{post.image_url}} alt="">
+                  {% if post.image_url %}
+                  <img class="img-fluid" src={{post.image_url}} alt="">
+                  {% else %}
+                  <img class="img-fluid" src="{% static 'banner/blog.png' %}" alt="">
+                  {% endif %}
                 </div>
                 <div class="blog__slide__content">
                   <h3><a href="#">{{post.title}}</a></h3>
@@ -80,18 +84,22 @@
       <!--================ Blog slider end =================-->
 
       <!--================ Start Blog Post Area =================-->
-      <!-- <section class="blog-post-area section-margin mt-4">
+      <section class="blog-post-area section-margin mt-4">
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
               {% for post in fresh_posts %}
               <div class="single-recent-blog-post">
                 <div class="thumb">
+                  {% if post.image_url %}
                   <img class="img-fluid" src={{post.image_url}} alt="">
+                  {% else %}
+                  <img class="img-fluid" src="{% static 'banner/blog.png' %}" alt="">
+                  {% endif %}
                   <ul class="thumb-info">
-                    <li><a href="#"><i class="ti-user"></i>Admin</a></li>
+                    <li><a href="#"><i class="ti-user"></i>{{post.author}}</a></li>
                     <li><a href="#"><i class="ti-notepad"></i>{{post.published_at}}</a></li>
-                    <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                    <li><a href="#"><i class="ti-themify-favicon"></i>{{post.comments_amount}}</a></li>
                   </ul>
                 </div>
                 <div class="details mt-20">
@@ -150,7 +158,7 @@
             <!-- End Blog Post Siddebar -->
           </div>
         </div>
-      </section> -->
+      </section>
       <!--================ End Blog Post Area =================-->
     </main>
 
