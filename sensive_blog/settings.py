@@ -96,10 +96,6 @@ STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-print(STATIC_URL)
-print(STATICFILES_DIRS)
-
-
 MEDIA_ROOT = os.getenv("MEDIA_ROOT", os.path.join(BASE_DIR, 'media'))
 
 STATIC_ROOT = os.getenv("STATIC_ROOT")
